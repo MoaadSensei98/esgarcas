@@ -181,6 +181,19 @@
         .modal-close:hover {
             color: #f00;
         }
+        @media (max-width: 768px) {
+             section.proyecto {
+                    flex-direction: column !important;
+                    padding: 15px;
+                }
+             section.proyecto:nth-child(even) {
+                 flex-direction: column !important;
+                }
+             .proyecto-carousel {
+                 max-width: 100%;
+                 margin-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
