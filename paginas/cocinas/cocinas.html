@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../../img/logo/favicon.ico" type="image/x-icon">
-    <link rel="mask-icon" href="../../img/logo/favicon.png" color="#000000">
-    <title>Cocinas - Construcciones Esgarcas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../img/logo/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="../../img/logo/favicon.png" color="#000000" />
+    <title>Cocina - Construcciones Esgarcas</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -28,11 +28,18 @@
             gap: 30px;
             padding: 15px;
         }
-        .logo-container img {
+        .logo-container a {
+            display: inline-block;
             height: 100px;
+            line-height: 0;
+        }
+        .logo-container a img {
+            height: 100%;
+            display: block;
         }
         .logo-container h1 {
             font-size: 2rem;
+            margin: 0;
         }
         .titulo-principal {
             text-align: center;
@@ -40,46 +47,151 @@
             margin: 20px 0;
             font-weight: 800;
         }
-        .proyecto {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        section.proyecto {
             max-width: 1200px;
             margin: 40px auto;
+            display: flex;
+            align-items: center;
+            gap: 30px;
             padding: 20px;
             background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        section.proyecto:nth-child(even) {
+            flex-direction: row-reverse;
         }
         .proyecto-texto {
             flex: 1;
-            padding: 20px;
         }
         .proyecto-texto h2 {
-            color: #000;
+            font-weight: 700;
+            font-size: 1.8rem;
             margin-bottom: 10px;
         }
         .proyecto-texto p {
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.4;
+            color: #555;
         }
-        .proyecto-img {
+        .proyecto-carousel {
             flex: 1;
+            position: relative;
+            max-width: 500px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #eee;
+        }
+        .proyecto-carousel img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .proyecto-carousel .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.4);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+        .proyecto-carousel .btn:hover {
+            background-color: rgba(0,0,0,0.7);
+        }
+        .proyecto-carousel .btn.left {
+            left: 10px;
+        }
+        .proyecto-carousel .btn.right {
+            right: 10px;
+        }
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(6px);
             display: flex;
             justify-content: center;
+            align-items: center;
+            z-index: 1500;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .proyecto-img img {
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-carousel {
+            position: relative;
+            max-width: 80vw;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #222;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 0 20px black;
+        }
+        .modal-carousel img {
             max-width: 100%;
-            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            cursor: default;
             border-radius: 10px;
+            user-select: none;
+        }
+        .modal-carousel .btn {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 2rem;
+            user-select: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .modal-carousel .btn:hover {
+            background-color: rgba(255,255,255,0.5);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            font-weight: 900;
+            transition: color 0.3s ease;
+            z-index: 1600;
+        }
+        .modal-close:hover {
+            color: #f00;
         }
         @media (max-width: 768px) {
-            .proyecto {
-                flex-direction: column;
-                text-align: center;
-            }
-            .proyecto-texto, .proyecto-img {
-                padding: 10px;
+             section.proyecto {
+                    flex-direction: column !important;
+                    padding: 15px;
+                }
+             section.proyecto:nth-child(even) {
+                 flex-direction: column !important;
+                }
+             .proyecto-carousel {
+                 max-width: 100%;
+                 margin-top: 20px;
             }
         }
     </style>
@@ -87,74 +199,185 @@
 <body>
 
 <header>
-     <div class="logo-container">
+    <div class="logo-container">
         <a href="../../index.html">
-            <img src="../../img/logo/logo.jpg" alt="Logo ESGARCAS">
+            <img src="../../img/logo/logo.jpg" alt="Logo ESGARCAS" />
         </a>
         <h1>CONSTRUCCIONES ESGARCAS</h1>
     </div>
 </header>
+
 <h2 class="titulo-principal">COCINAS</h2>
-<section class="proyecto">
-    <div class="proyecto-texto">
-        <h2>PROYECTO 1</h2>
-        <p>Esta es una de nuestras destacadas obras de interior, donde la calidad y el diseño se fusionan para ofrecer un espacio elegante y funcional. Nos enfocamos en cada detalle para garantizar un resultado excepcional.</p>
-    </div>
-    <div class="proyecto-img">
-        <img src="../../img/servicios/cocinas/proyecto1/cocina1.jpg" alt="Obra interior">
-    </div>
-</section>
 
-<section class="proyecto" style="flex-direction: row-reverse;">
-    <div class="proyecto-texto">
-        <h2>PROYECTO 2</h2>
-        <p>En este proyecto, hemos trabajado en la optimización de espacios interiores para brindar una mayor funcionalidad sin sacrificar el diseño. Cada material ha sido cuidadosamente seleccionado para un acabado impecable.</p>
-    </div>
-    <div class="proyecto-img">
-        <img src="../../img/servicios/cocinas/proyecto2/cocina1.jpg" alt="Obra interior 2">
-    </div>
-</section>
-<section class="proyecto">
-    <div class="proyecto-texto">
-        <h2>PROYECTO 3</h2>
-        <p>Esta es una de nuestras destacadas obras de interior, donde la calidad y el diseño se fusionan para ofrecer un espacio elegante y funcional. Nos enfocamos en cada detalle para garantizar un resultado excepcional.</p>
-    </div>
-    <div class="proyecto-img">
-        <img src="../../img/servicios/cocinas/proyecto3/cocina1.jpg" alt="Obra interior">
-    </div>
-</section>
+<div id="contenedor-proyectos"></div>
 
-<section class="proyecto" style="flex-direction: row-reverse;">
-    <div class="proyecto-texto">
-        <h2>PROYECTO 4</h2>
-        <p>En este proyecto, hemos trabajado en la optimización de espacios interiores para brindar una mayor funcionalidad sin sacrificar el diseño. Cada material ha sido cuidadosamente seleccionado para un acabado impecable.</p>
-    </div>
-    <div class="proyecto-img">
-        <img src="../../img/servicios/cocinas/proyecto4/cocina1.jpg" alt="Obra interior 2">
-    </div>
-</section>
-<section class="proyecto">
-    <div class="proyecto-texto">
-        <h2>PROYECTO 5</h2>
-        <p>Esta es una de nuestras destacadas obras de interior, donde la calidad y el diseño se fusionan para ofrecer un espacio elegante y funcional. Nos enfocamos en cada detalle para garantizar un resultado excepcional.</p>
-    </div>
-    <div class="proyecto-img">
-        <img src="../../img/servicios/cocinas/proyecto5/cocina1.jpg" alt="Obra interior">
-    </div>
-</section>
-
-<section class="proyecto" style="flex-direction: row-reverse;">
-    <div class="proyecto-texto">
-        <h2>PROYECTO 6</h2>
-        <p>En este proyecto, hemos trabajado en la optimización de espacios interiores para brindar una mayor funcionalidad sin sacrificar el diseño. Cada material ha sido cuidadosamente seleccionado para un acabado impecable.</p>
-    </div>
-    <div class="proyecto-img">
-        <img src="../../img/servicios/cocinas/proyecto6/cocina1.jpg" alt="Obra interior 2">
-    </div>
-</section>
 <footer>
-    <p>&copy; 2024 ESGARCAS. Todos los derechos reservados.</p>
+    Construcciones Esgarcas © 2023
 </footer>
 
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-carousel">
+        <button class="btn left" id="modalPrev">&#10094;</button>
+        <img src="" alt="Imagen ampliada" id="modalImage" />
+        <button class="btn right" id="modalNext">&#10095;</button>
+        <span class="modal-close" id="modalClose">&times;</span>
+    </div>
+</div>
+
+<script>
+    // Arreglo con las imágenes de cada proyecto (3 por proyecto)
+    const projectImages = [
+        [
+            "../../img/servicios/cocinas/proyecto1/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto2/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto3/cocina1.jpg"
+        ],
+        [
+            "../../img/servicios/cocinas/proyecto2/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto3/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto4/cocina1.jpg"
+        ],
+        [
+            "../../img/servicios/cocinas/proyecto3/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto4/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto5/cocina1.jpg"
+        ],
+        [
+            "../../img/servicios/cocinas/proyecto4/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto5/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto6/cocina1.jpg"
+        ],
+        [
+            "../../img/servicios/cocinas/proyecto5/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto6/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto1/cocina1.jpg"
+        ],
+        [
+            "../../img/servicios/cocinas/proyecto6/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto1/cocina1.jpg",
+            "../../img/servicios/cocinas/proyecto1/cocina1.jpg"
+        ]
+    ];
+
+    // Textos de proyectos para descripción
+    const projectTexts = [
+        "Esta es una de nuestras destacadas obras de cocina, donde la calidad y el diseño se fusionan para ofrecer un espacio elegante y funcional. Nos enfocamos en cada detalle para garantizar un resultado excepcional.",
+        "En este proyecto, hemos trabajado en la optimización de espacios cocinas para brindar una mayor funcionalidad sin sacrificar el diseño. Cada material ha sido cuidadosamente seleccionado para un acabado impecable.",
+        "Esta es una de nuestras destacadas obras de cocina, donde la calidad y el diseño se fusionan para ofrecer un espacio elegante y funcional. Nos enfocamos en cada detalle para garantizar un resultado excepcional.",
+        "En este proyecto, hemos trabajado en la optimización de espacios cocinas para brindar una mayor funcionalidad sin sacrificar el diseño. Cada material ha sido cuidadosamente seleccionado para un acabado impecable.",
+        "Esta es una de nuestras destacadas obras de cocina, donde la calidad y el diseño se fusionan para ofrecer un espacio elegante y funcional. Nos enfocamos en cada detalle para garantizar un resultado excepcional.",
+        "En este proyecto, hemos trabajado en la optimización de espacios cocinas para brindar una mayor funcionalidad sin sacrificar el diseño. Cada material ha sido cuidadosamente seleccionado para un acabado impecable."
+    ];
+
+    // Contenedor donde insertamos los proyectos
+    const contenedorProyectos = document.getElementById('contenedor-proyectos');
+
+    // Crear los proyectos dinámicamente
+    projectImages.forEach((images, i) => {
+        const section = document.createElement('section');
+        section.classList.add('proyecto');
+        if ((i+1) % 2 === 0) section.style.flexDirection = 'row-reverse';
+
+        // Crear el HTML interno con el primer imagen del carousel
+        section.innerHTML = `
+            <div class="proyecto-texto">
+                <h2>PROYECTO ${i + 1}</h2>
+                <p>${projectTexts[i]}</p>
+            </div>
+            <div class="proyecto-carousel">
+                <button class="btn left">&#10094;</button>
+                <img src="${images[0]}" alt="Obra cocina proyecto ${i + 1}" />
+                <button class="btn right">&#10095;</button>
+            </div>
+        `;
+
+        // Guardamos las imágenes para ese proyecto en dataset
+        section.dataset.images = JSON.stringify(images);
+
+        contenedorProyectos.appendChild(section);
+    });
+
+    // Variables modal
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalImage = document.getElementById('modalImage');
+    const modalPrevBtn = document.getElementById('modalPrev');
+    const modalNextBtn = document.getElementById('modalNext');
+    const modalCloseBtn = document.getElementById('modalClose');
+
+    let currentProjectImages = [];
+    let currentIndex = 0;
+
+    // Inicialización de carousels en cada proyecto
+    const proyectos = document.querySelectorAll('section.proyecto');
+
+    proyectos.forEach((proyecto) => {
+        const carousel = proyecto.querySelector('.proyecto-carousel');
+        const leftBtn = carousel.querySelector('.btn.left');
+        const rightBtn = carousel.querySelector('.btn.right');
+        const imgElement = carousel.querySelector('img');
+        const images = JSON.parse(proyecto.dataset.images);
+
+        let index = 0;
+
+        function updateImage() {
+            imgElement.src = images[index];
+        }
+
+        leftBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            index = (index - 1 + images.length) % images.length;
+            updateImage();
+        });
+
+        rightBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            index = (index + 1) % images.length;
+            updateImage();
+        });
+
+        // Abrir modal al hacer clic en la imagen
+        imgElement.addEventListener('click', () => {
+            currentProjectImages = images;
+            currentIndex = index;
+            modalImage.src = currentProjectImages[currentIndex];
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Funciones modal
+    function showModalImage(idx) {
+        currentIndex = (idx + currentProjectImages.length) % currentProjectImages.length;
+        modalImage.src = currentProjectImages[currentIndex];
+    }
+
+    modalPrevBtn.addEventListener('click', () => {
+        showModalImage(currentIndex - 1);
+    });
+
+    modalNextBtn.addEventListener('click', () => {
+        showModalImage(currentIndex + 1);
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape" && modalOverlay.classList.contains('active')) {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
+
 </body>
-</html>S
+</html>
