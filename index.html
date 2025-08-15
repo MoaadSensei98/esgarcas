@@ -331,19 +331,44 @@ footer {
     </div>
 </section>
 
-    <section id="about">
-        <h2>¿Quiénes Somos?</h2>
-        <p>En Construcciones Esgarcas llevamos años transformando espacios en hogares y negocios llenos de estilo, funcionalidad y calidad. Nos especializamos en reformas integrales de interiores y exteriores, con un enfoque particular en baños y cocinas, creando ambientes modernos, cómodos y adaptados a las necesidades de cada cliente.
+<section id="about">
+    <h2>¿Quiénes Somos?</h2>
+    <p>
+        En <strong>Construcciones Esgarcas</strong> llevamos años transformando espacios en hogares y negocios llenos de estilo, funcionalidad y calidad. 
+        Nos especializamos en reformas integrales de interiores y exteriores, con un enfoque particular en baños y cocinas, creando ambientes modernos, 
+        cómodos y adaptados a las necesidades de cada cliente.
+    </p>
+    <p>
+        Nuestro equipo combina experiencia, profesionalidad y atención al detalle para garantizar acabados impecables y soluciones a medida. 
+        Desde la planificación hasta la ejecución final, trabajamos mano a mano con nuestros clientes, asegurando que cada proyecto se realice con puntualidad, 
+        transparencia y los más altos estándares de calidad.
+    </p>
+    <p>
+        En Construcciones Esgarcas no solo reformamos, <strong>renovamos tu manera de vivir tus espacios</strong>.
+    </p>
+</section>
 
-           Nuestro equipo combina experiencia, profesionalidad y atención al detalle para garantizar acabados impecables y soluciones a medida. Desde la planificación hasta la ejecución final, trabajamos mano a mano con nuestros clientes, asegurando que cada proyecto se realice con puntualidad, transparencia y los más altos estándares de calidad.
+<section id="contact">
+    <h2>Contacto</h2>
+    <form action="mailto:mobeka98@gmail.com" method="post" enctype="text/plain" style="max-width: 500px;">
+        <label for="name">Nombre:</label><br>
+        <input type="text" id="name" name="Nombre" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
 
-           En Construcciones Esgarcas no solo reformamos, renovamos tu manera de vivir tus espacios.</p>
-    </section>
+        <label for="email">Correo electrónico:</label><br>
+        <input type="email" id="email" name="Correo" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
 
-    <section id="contact">
-        <h2>Contacto</h2>
-        <p>For more information or to schedule a consultation, please contact us at <a href="mailto:info@esgarcas.com">info@esgarcas.com</a> or call us at (123) 456-7890.</p>
-    </section>
+        <label for="message">Mensaje:</label><br>
+        <textarea id="message" name="Mensaje" rows="5" required style="width: 100%; padding: 8px; margin-bottom: 10px;"></textarea><br>
+
+        <button type="submit" style="background-color: #E30613; color: white; border: none; padding: 10px 15px; cursor: pointer; font-weight: bold; border-radius: 5px;">
+            Enviar
+        </button>
+        <button type="reset" style="background-color: #555; color: white; border: none; padding: 10px 15px; cursor: pointer; font-weight: bold; border-radius: 5px; margin-left: 5px;">
+            Limpiar
+        </button>
+    </form>
+</section>
+
 </div>
 
 <footer>
@@ -361,4 +386,5 @@ document.querySelectorAll('.nav-item').forEach(item => {
 
 </body>
 </html>
+
 
