@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/logo/favicon.ico" type="image/x-icon">
     <link rel="mask-icon" href="img/logo/favicon.png" color="#000000">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pIVzWB0HvyqT3P1c0b+0X1sX+2b0tCqHQd8C2cHxf5QYfzGZ6jVJ5y5QyqQ2t0+9K69WcMsh8z1H91GV1C2+mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Construcciones Esgarcas</title>
     <style>
      body {
@@ -269,6 +270,17 @@ footer {
     border-top: 3px solid #E30613; /* Línea roja arriba */
     position: relative; /* Lo puedes cambiar a fixed si lo necesitas */
 }
+ .whatsapp-icon {
+    color: #25D366; /* verde WhatsApp */
+    font-size: 1.2rem; /* tamaño del icono */
+    vertical-align: middle; /* alinea con el texto */
+    margin-right: 5px; /* separa un poco del texto */
+    transition: transform 0.2s;
+}
+
+.whatsapp-icon:hover {
+    transform: scale(1.2); /* efecto al pasar el ratón */
+}
     </style>
 </head>
 <body>
@@ -373,6 +385,15 @@ footer {
 </section>-->
 <section id="contact">
   <h2>Contacto</h2>
+<p>
+    Llámanos al número: <strong>(+34) 666 666 666</strong> o envíanos un 
+    <a href="https://wa.me/34666666666" target="_blank" style="text-decoration:none;">
+        <i class="fab fa-whatsapp whatsapp-icon"></i> WhatsApp
+    </a>
+</p>
+<p>
+    También puedes rellenar este formulario:
+</p>
     <form action="https://formspree.io/f/meozdwqa" method="POST">
       <label for="name">Nombre:</label><br>
         <input type="text" id="name" name="nombre" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
@@ -409,6 +430,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
 
 </body>
 </html>
+
 
 
 
