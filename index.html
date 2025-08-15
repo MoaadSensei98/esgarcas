@@ -350,15 +350,15 @@ footer {
 
 <section id="contact">
     <h2>Contacto</h2>
-    <form action="mailto:mobeka98@gmail.com" method="post" enctype="text/plain" style="max-width: 500px;">
+    <form action="enviar_correo.php" method="post" style="max-width: 500px;">
         <label for="name">Nombre:</label><br>
-        <input type="text" id="name" name="Nombre" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+        <input type="text" id="name" name="nombre" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
 
         <label for="email">Correo electrónico:</label><br>
-        <input type="email" id="email" name="Correo" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+        <input type="email" id="email" name="correo" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
 
         <label for="message">Mensaje:</label><br>
-        <textarea id="message" name="Mensaje" rows="5" required style="width: 100%; padding: 8px; margin-bottom: 10px;"></textarea><br>
+        <textarea id="message" name="mensaje" rows="5" required style="width: 100%; padding: 8px; margin-bottom: 10px;"></textarea><br>
 
         <button type="submit" style="background-color: #E30613; color: white; border: none; padding: 10px 15px; cursor: pointer; font-weight: bold; border-radius: 5px;">
             Enviar
@@ -386,5 +386,6 @@ document.querySelectorAll('.nav-item').forEach(item => {
 
 </body>
 </html>
+
 
 
