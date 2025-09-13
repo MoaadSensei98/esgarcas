@@ -228,9 +228,12 @@
     // Arreglo con las imágenes de cada proyecto (3 por proyecto)
     const projectImages = [
         [
-            "../../img/servicios/interiores/proyecto1/interior1.jpg",
-            "../../img/servicios/interiores/proyecto2/interior1.jpg",
-            "../../img/servicios/interiores/proyecto3/interior1.jpg"
+            "../../img/servicios/interiores/proyecto1/interior_estudio_mara_1.png",
+            "../../img/servicios/interiores/proyecto1/interior_estudio_mara_2.png",
+            "../../img/servicios/interiores/proyecto1/interior_estudio_mara_3.png",
+            "../../img/servicios/interiores/proyecto1/interior_estudio_mara_4.png",
+            "../../img/servicios/interiores/proyecto1/interior_estudio_mara_5.png",
+            "../../img/servicios/interiores/proyecto1/interior_estudio_mara_6.png"
         ],
         [
             "../../img/servicios/interiores/proyecto2/interior1.jpg",
@@ -258,10 +261,18 @@
             "../../img/servicios/interiores/proyecto1/interior1.jpg"
         ]
     ];
-
+    // Títulos de los proyectos
+    const projectTitles = [
+        "Estudio en vivienda unifamiliar",
+        "Reforma integral de salón",
+        "Diseño de oficina moderna",
+        "Decoración de loft urbano",
+        "Renovación de apartamento clásico",
+        "Espacios abiertos con estilo"
+    ];
     // Textos de proyectos para descripción
     const projectTexts = [
-        "Esta es una de nuestras destacadas obras de interior, donde la calidad y el diseño se fusionan para ofrecer un espacio elegante y funcional. Nos enfocamos en cada detalle para garantizar un resultado excepcional.",
+        "Este proyecto consistió en la transformación integral de un espacio exterior en desuso en un estudio habitable dentro de una vivienda unifamiliar. Se partió de una estructura básica de obra vista, donde se realizaron los siguientes trabajos: demoliciones y saneamiento de muros existentes, ejecución de cerramientos de fábrica de ladrillo cerámico para un óptimo aislamiento, nueva instalación eléctrica y de telecomunicaciones, colocación de carpintería exterior de aluminio con acabado efecto madera, revestimiento exterior con pintura blanca y pavimentación en gres porcelánico de gran formato. El resultado es un estudio funcional, moderno y abierto al exterior, que convierte un espacio desaprovechado en una extensión habitable de la vivienda.",
         "En este proyecto, hemos trabajado en la optimización de espacios interiores para brindar una mayor funcionalidad sin sacrificar el diseño. Cada material ha sido cuidadosamente seleccionado para un acabado impecable.",
         "Esta es una de nuestras destacadas obras de interior, donde la calidad y el diseño se fusionan para ofrecer un espacio elegante y funcional. Nos enfocamos en cada detalle para garantizar un resultado excepcional.",
         "En este proyecto, hemos trabajado en la optimización de espacios interiores para brindar una mayor funcionalidad sin sacrificar el diseño. Cada material ha sido cuidadosamente seleccionado para un acabado impecable.",
@@ -281,7 +292,7 @@
         // Crear el HTML interno con el primer imagen del carousel
         section.innerHTML = `
             <div class="proyecto-texto">
-                <h2>PROYECTO ${i + 1}</h2>
+                <h2>${projectTitles[i]}</h2>
                 <p>${projectTexts[i]}</p>
             </div>
             <div class="proyecto-carousel">
@@ -381,3 +392,4 @@
 
 </body>
 </html>
+
